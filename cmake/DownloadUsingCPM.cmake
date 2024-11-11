@@ -23,6 +23,12 @@ if(CMAKE_VERSION VERSION_LESS "3.25.0")
   message(WARNING "Please update to cmake 3.25+ to remove warnings from third-party libs")
 endif()
 
+find_program(GIT_EXECUTABLE
+  NAMES ${git_names}
+  PATHS ${github_path} ${_git_sourcetree_path}
+  DOC "Git command line client"
+  )
+
 # If A uses find_package(B), and we install A and B using CPM, then:
 # 1. make sure to call write_package_stub in SetupB
 # 2. make sure to call SetupB at the beginning of SetupA
